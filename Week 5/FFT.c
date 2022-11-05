@@ -18,7 +18,7 @@
 #include "timer.h"
 
 #define PI 3.14159265
-#define SIZE 1048576
+#define SIZE 1000
 
 double _Complex * computeFFT(double _Complex *, int);
 

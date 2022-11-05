@@ -69,10 +69,11 @@ double _Complex * computeFFT(double _Complex * numbers, int N) {
 
 	// array to hold X(k)
 	double _Complex * X = (double _Complex*)malloc(N * sizeof(double _Complex));
+	double _Complex * Y = (double _Complex*)malloc(N * sizeof(double _Complex));
 
 	// copy array of complex numbers and energies array into device
 	// copy the energies array back to host when done
-	#pragma acc data copyin(numbers[0:N],X[0:N]) copyout(X[0:N])
+	#pragma acc data copyin(numbers[0:N],X[0:N]) copyout(Y[0:N])
 	// declare a parallel region
 	#pragma acc region
 	// indicate a parallel loop
@@ -100,9 +101,9 @@ double _Complex * computeFFT(double _Complex * numbers, int N) {
 			sumOdd = resultOdd + sumOdd;
 		}
 		// compute X(k)
-		X[k] = sumEven + sumOdd;
+		Y[k] = sumEven + sumOdd;
 	}
-	return X;
+	return Y;
 }
 
 /*+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-

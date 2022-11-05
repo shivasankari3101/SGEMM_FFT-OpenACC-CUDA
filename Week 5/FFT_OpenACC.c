@@ -77,7 +77,7 @@ double _Complex * computeFFT(double _Complex * numbers, int N) {
 	// declare a parallel region
 	#pragma acc region
 	// indicate a parallel loop
-    #pragma acc loop independent
+    #pragma acc parallel loop independent
 	// compute all X(K)
 
 	for (int k = 0; k < N; k++) {

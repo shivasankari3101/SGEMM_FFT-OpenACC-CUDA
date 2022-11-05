@@ -20,7 +20,7 @@
 #include <cuda.h>
 
 #define PI 3.14159265
-#define SIZE 262144
+#define SIZE 1000
 
 //double _Complex * computeFFT(double _Complex *, int);
 
